@@ -42,7 +42,7 @@ $.getJSON('barsort.json', function(barsortdata) {
 
 		var option = {
 			title : {
-				text : '单物种数值排序柱状图',
+				text : '多物种数值排序柱状图',
 				subtext : '数据来源：毕鉴昭'
 			},
 			tooltip : {

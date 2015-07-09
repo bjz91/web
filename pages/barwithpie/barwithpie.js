@@ -62,6 +62,7 @@ $.getJSON('barwithpie.json', function(data) {
 			series : [{
 				name : data.barpie.unit[0],
 				type : 'bar',
+				barCategoryGap : '50%',
 				data : function() {
 					var list = [];
 					for (var i = 0; i < data.barpie.data.length; i++) {
@@ -72,6 +73,7 @@ $.getJSON('barwithpie.json', function(data) {
 			}, {
 				name : '单位2',
 				type : 'bar',
+				barCategoryGap : '50%',
 				data : function() {
 					var list = [];
 					for (var i = 0; i < data.barpie.data.length; i++) {
@@ -104,36 +106,36 @@ $.getJSON('barwithpie.json', function(data) {
 				data : data.barpie.data[0].subspecies.name
 			},
 			/*
-			toolbox : {
-				show : true,
-				feature : {
-					mark : {
-						show : true
-					},
-					dataView : {
-						show : true,
-						readOnly : false
-					},
-					magicType : {
-						show : true,
-						type : ['pie', 'funnel'],
-						option : {
-							funnel : {
-								x : '25%',
-								width : '50%',
-								funnelAlign : 'left',
-								max : 1548
-							}
-						}
-					},
-					restore : {
-						show : true
-					},
-					saveAsImage : {
-						show : true
-					}
-				}
-			},*/
+			 toolbox : {
+			 show : true,
+			 feature : {
+			 mark : {
+			 show : true
+			 },
+			 dataView : {
+			 show : true,
+			 readOnly : false
+			 },
+			 magicType : {
+			 show : true,
+			 type : ['pie', 'funnel'],
+			 option : {
+			 funnel : {
+			 x : '25%',
+			 width : '50%',
+			 funnelAlign : 'left',
+			 max : 1548
+			 }
+			 }
+			 },
+			 restore : {
+			 show : true
+			 },
+			 saveAsImage : {
+			 show : true
+			 }
+			 }
+			 },*/
 			calculable : true,
 			series : [{
 				name : '物种详细',

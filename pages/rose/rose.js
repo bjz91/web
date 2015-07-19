@@ -1,4 +1,28 @@
 $.getJSON('barsort.json', function(data) {
+	
+	/*------------ 排序 ------------*/
+	var newData = data.barsort.data;
+	var newName = data.barsort.name;
+	var temp;
+
+	for (var i = 0; i < newData.length - 1; i++) {
+		var max = i;
+		//查找最小值
+		for (var j = i + 1; j < newData.length; j++) {
+			if (newData[max] < newData[j]) {
+				max = j;
+			}
+		}
+		if (max != i) {
+			temp = newData[i];
+			newData[i] = newData[max];
+			newData[max] = temp;
+
+			temp = newName[i];
+			newName[i] = newName[max];
+			newName[max] = temp;
+		}
+	}
 
 	/*------------ 画图 ------------*/
 
@@ -65,10 +89,10 @@ $.getJSON('barsort.json', function(data) {
 				maxSize : '50%', // for funnel
 				data : function() {
 					var list = [];
-					for (var i = 0; i < data.barsort.data.length; i++) {
+					for (var i = 0; i < newData.length; i++) {
 						var obj = {
-							'value' : data.barsort.data[i],
-							'name' : data.barsort.name[i]
+							'value' : newData[i],
+							'name' : newName[i]
 						};
 						list.push(obj);
 					}

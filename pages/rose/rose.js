@@ -1,5 +1,26 @@
-$.getJSON('barsort.json', function(data) {
-	
+function initTime() {
+
+	var objYear = document.getElementById('year');
+	var objMonth = document.getElementById('month');
+	var objDate = document.getElementById('date');
+
+	var yearIndex = objYear.selectedIndex;
+	var monthIndex = objMonth.selectedIndex;
+	var dateIndex = objDate.selectedIndex;
+
+	var year = objYear.options[yearIndex].text;
+	var month = objMonth.options[monthIndex].text;
+	var date = objDate.options[dateIndex].text;
+
+	var fileName = year + '/' + month + '/' + date + '/' + year + month + date + '.json';
+
+	$.getJSON(fileName, function(barsortdata) {
+		exePlot(year, month, date, barsortdata);
+	});
+}
+
+function exePlot(year, month, date, data) {
+
 	/*------------ 排序 ------------*/
 	var newData = data.barsort.data;
 	var newName = data.barsort.name;
@@ -42,7 +63,7 @@ $.getJSON('barsort.json', function(data) {
 
 		var option = {
 			title : {
-				text : '多物种数值排序玫瑰图',
+				text : year + '年' + month + '月' + date + '日' + '玫瑰图',
 				subtext : '数据来源：毕鉴昭',
 				x : 'center'
 			},
@@ -104,4 +125,4 @@ $.getJSON('barsort.json', function(data) {
 		// 为echarts对象加载数据
 		myChart.setOption(option);
 	});
-});
+}

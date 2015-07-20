@@ -1,106 +1,115 @@
 function initTime() {
-	var year = '2014';
-	var month = '10';
-	var date = '01';
-	var hour = '00';
-	exePlot(year, month, date, hour);
+
+	var objYear = document.getElementById('year');
+	var objMonth = document.getElementById('month');
+	var objDate = document.getElementById('date');
+
+	var yearIndex = objYear.selectedIndex;
+	var monthIndex = objMonth.selectedIndex;
+	var dateIndex = objDate.selectedIndex;
+
+	var year = objYear.options[yearIndex].text;
+	var month = objMonth.options[monthIndex].text;
+	var date = objDate.options[dateIndex].text;
+
+	var fileName = year + '/' + month + '/' + date + '/' + year + month + date + '.json';
+
+	$.getJSON(fileName, function(barsortdata) {
+		exePlot(year, month, date, barsortdata);
+	});
 }
 
-function exePlot(year, month, date, hour) {
-	var fileName = year + '/' + month + '/' + date + '/' + year + month + date + hour + '.json';
+function exePlot(year, month, date, barsortdata) {
 
-	$.getJSON('2014100100.json', function(barsortdata) {
+	/*------------ 排序 ------------*/
+	var newData = barsortdata.barsort.data;
+	var newName = barsortdata.barsort.name;
+	var temp;
 
-		/*------------ 排序 ------------*/
-		var oriData = barsortdata.barsort.data;
-		var oriName = barsortdata.barsort.name;
-		var temp;
-
-		for (var i = 0; i < oriData.length - 1; i++) {
-			var max = i;
-			//查找最小值
-			for (var j = i + 1; j < oriData.length; j++) {
-				if (oriData[max] < oriData[j]) {
-					max = j;
-				}
-			}
-			if (max != i) {
-				temp = oriData[i];
-				oriData[i] = oriData[max];
-				oriData[max] = temp;
-
-				temp = oriName[i];
-				oriName[i] = oriName[max];
-				oriName[max] = temp;
+	for (var i = 0; i < newData.length - 1; i++) {
+		var max = i;
+		//查找最小值
+		for (var j = i + 1; j < newData.length; j++) {
+			if (newData[max] < newData[j]) {
+				max = j;
 			}
 		}
+		if (max != i) {
+			temp = newData[i];
+			newData[i] = newData[max];
+			newData[max] = temp;
 
-		/*------------ 画图 ------------*/
+			temp = newName[i];
+			newName[i] = newName[max];
+			newName[max] = temp;
+		}
+	}
 
-		// 路径配置
-		require.config({
-			paths : {
-				echarts : '../../src/echarts-2.2.4/build/dist'
-			}
-		});
+	/*------------ 画图 ------------*/
 
-		// 使用
-		require(['echarts', 'echarts/chart/bar', 'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
-		], function(ec) {
+	// 路径配置
+	require.config({
+		paths : {
+			echarts : '../../src/echarts-2.2.4/build/dist'
+		}
+	});
 
-			// 基于准备好的dom，初始化echarts图表
-			var myChart = ec.init(document.getElementById('container'), 'macarons');
+	// 使用
+	require(['echarts', 'echarts/chart/bar', 'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+	], function(ec) {
 
-			var option = {
-				title : {
-					text : '多物种数值排序柱状图',
-					subtext : '数据来源：毕鉴昭'
-				},
-				tooltip : {
-					trigger : 'axis'
-				},
-				legend : {
-					data : ['单位']
-				},
-				toolbox : {
-					show : true,
-					feature : {
-						mark : {
-							show : true
-						},
-						dataView : {
-							show : true,
-							readOnly : false
-						},
-						magicType : {
-							show : true,
-							type : ['line', 'bar']
-						},
-						restore : {
-							show : true
-						},
-						saveAsImage : {
-							show : true
-						}
+		// 基于准备好的dom，初始化echarts图表
+		var myChart = ec.init(document.getElementById('container'), 'macarons');
+
+		var option = {
+			title : {
+				text : year + '年' + month + '月' + date + '日' + '物种排序',
+				subtext : '数据来源：毕鉴昭'
+			},
+			tooltip : {
+				trigger : 'axis'
+			},
+			legend : {
+				data : ['单位']
+			},
+			toolbox : {
+				show : true,
+				feature : {
+					mark : {
+						show : true
+					},
+					dataView : {
+						show : true,
+						readOnly : false
+					},
+					magicType : {
+						show : true,
+						type : ['line', 'bar']
+					},
+					restore : {
+						show : true
+					},
+					saveAsImage : {
+						show : true
 					}
-				},
-				calculable : true,
-				xAxis : [{
-					type : 'category',
-					data : oriName
-				}],
-				yAxis : [{
-					type : 'value'
-				}],
-				series : [{
-					name : '单位',
-					type : 'bar',
-					data : oriData
-				}]
-			};
+				}
+			},
+			calculable : true,
+			xAxis : [{
+				type : 'category',
+				data : newName
+			}],
+			yAxis : [{
+				type : 'value'
+			}],
+			series : [{
+				name : '单位',
+				type : 'bar',
+				data : newData
+			}]
+		};
 
-			// 为echarts对象加载数据
-			myChart.setOption(option);
-		});
+		// 为echarts对象加载数据
+		myChart.setOption(option);
 	});
 }

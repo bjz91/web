@@ -11,8 +11,29 @@
 	<p>
 		说明：玫瑰图将不同物种的值显示为扇形面积大小，直观地反映物种的数值顺序；漏斗图则更为直接地显示物种的数值顺序。点击右上角工具栏中的“<font color="blue">饼状</font>”符号和“<font color="green">倒三角</font>”符号在玫瑰图和漏斗图之间进行切换。
 	</p>
+	<div id="selectdiv" style="margin:10px" align="left">
+		请选择时间，并点击刷新：
+		<br />
+		<form>
+			<select id="year">
+				<option value="2014" selected="selected">2014</option>
+			</select>
+			<select id="month">
+				<option value="10" selected="selected">10</option>
+			</select>
+			<select id="date">
+				<option value="01" selected="selected">01</option>
+				<option value="02">02</option>
+			</select>
+			<input type="button" value="刷新" style="width:50px;height:30px" onclick="initTime();"/>
+		</form>
+	</div>
+	<br />
 	<div align="center">
 		<div id="container" style="width:70%;height:500px"></div>
 	</div>
+	<script type="text/javascript">
+		initTime();
+	</script>
 
 </body>

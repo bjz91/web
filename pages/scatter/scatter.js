@@ -17,7 +17,7 @@ $.getJSON('bpnn.json', function(bpnndata) {
 
 				title : {
 					text : '多物种简单散点图',
-					subtext : '数据来源：毕鉴昭'
+					//subtext : '数据来源：毕鉴昭'
 				},
 				tooltip : {
 					trigger : 'axis',
@@ -71,7 +71,7 @@ $.getJSON('bpnn.json', function(bpnndata) {
 					}
 				},
 				xAxis : [{
-					name : 'kg/year',
+					name : 'ug/m3',
 					type : 'value',
 					scale : true,
 					axisLabel : {
@@ -79,7 +79,7 @@ $.getJSON('bpnn.json', function(bpnndata) {
 					}
 				}],
 				yAxis : [{
-					name : 'kg/year',
+					name : 'ug/m3',
 					min : 0,
 					type : 'value',
 					scale : true,
@@ -90,10 +90,29 @@ $.getJSON('bpnn.json', function(bpnndata) {
 				series : [{
 					name : 'Fitting Line',
 					type : 'line',
-					data : [[0, 0], [400, 400]]
+					itemStyle : {
+						normal : {
+							color : ['rgba(255,0,0,0.5)']
+						}
+					},
+					data : [[0, 1], [400, 300]]
+				}, {
+					name : 'Fitting Line',
+					type : 'line',
+					itemStyle : {
+						normal : {
+							color : ['rgba(0,180,120,0.5)']
+						}
+					},
+					data : [[1, 0], [380, 400]]
 				}, {
 					name : 'BPNN',
 					type : 'scatter',
+					itemStyle : {
+						normal : {
+							color : ['rgba(255,0,0,0.5)']
+						}
+					},
 					data : function() {
 						var list = new Array();
 						for (var i = 0; i < bpnndata.bpnn.length; i++) {
@@ -106,6 +125,11 @@ $.getJSON('bpnn.json', function(bpnndata) {
 				}, {
 					name : 'KNN',
 					type : 'scatter',
+					itemStyle : {
+						normal : {
+							color : ['rgba(0,180,120,0.5)']
+						}
+					},
 					data : function() {
 						var list = new Array();
 						for (var i = 0; i < knndata.knn.length; i++) {

@@ -64,7 +64,7 @@ function exePlot(year, month, date, data) {
 		var option = {
 			title : {
 				text : year + '年' + month + '月' + date + '日' + '玫瑰图',
-				subtext : '数据来源：毕鉴昭',
+				//subtext : '数据来源：毕鉴昭',
 				x : 'center'
 			},
 			tooltip : {

@@ -64,13 +64,13 @@ function exePlot(year, month, date, barsortdata) {
 		var option = {
 			title : {
 				text : year + '年' + month + '月' + date + '日' + '物种排序',
-				subtext : '数据来源：毕鉴昭'
+				//subtext : '数据来源：毕鉴昭'
 			},
 			tooltip : {
 				trigger : 'axis'
 			},
 			legend : {
-				data : ['单位']
+				data : ['物种']
 			},
 			toolbox : {
 				show : true,
@@ -100,12 +100,14 @@ function exePlot(year, month, date, barsortdata) {
 				data : newName
 			}],
 			yAxis : [{
-				type : 'value'
+				type : 'value',
+				name : 'ug/m3'
 			}],
 			series : [{
-				name : '单位',
+				name : '物种',
 				type : 'bar',
-				data : newData
+				data : newData,
+				barCategoryGap : '50%'
 			}]
 		};
 

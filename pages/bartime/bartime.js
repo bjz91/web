@@ -40,7 +40,7 @@ $.getJSON('bartime.json', function(data) {
 						return s.slice(0, 4);
 					}
 				},
-				autoPlay : true,
+				//autoPlay : true,
 				playInterval : 1000,
 				notMerge : true
 			},
@@ -95,7 +95,7 @@ $.getJSON('bartime.json', function(data) {
 				}],
 				yAxis : {
 					'type' : 'value',
-					'name' : '单位'
+					'name' : 'ug/m3'
 				},
 				//第一个数据
 				series : oriSeries
@@ -165,7 +165,7 @@ $.getJSON('bartime.json', function(data) {
 				}],
 				yAxis : {
 					'type' : 'value',
-					'name' : '单位'
+					'name' : 'ug/m3'
 				},
 				series : newSeries
 			}

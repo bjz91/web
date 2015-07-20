@@ -8,7 +8,26 @@
 	<script src="bartime.js"></script>
 </head>
 <body>
+	<div id="selectdiv" style="margin:10px" align="left">
+		请选择时间，并点击刷新：
+		<br />
+		<form>
+			<select id="year">
+				<option value="2002" selected="selected">2002</option>
+				<option value="2003">2003</option>
+				<option value="2004">2004</option>
+				<option value="2005">2005</option>
+				<option value="2006">2006</option>
+				<option value="2007">2007</option>
+				<option value="2008">2008</option>
+				<input type="button" value="刷新" style="width:50px;height:30px" onclick="initTime();"/>
+			</select>
+		</form>
+	</div>
 	<div align="center">
 		<div id="container" style="width:80%;height:500px"></div>
 	</div>
+	<script type="text/javascript">
+		initTime();
+	</script>
 </body>

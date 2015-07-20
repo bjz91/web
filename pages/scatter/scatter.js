@@ -110,7 +110,7 @@ $.getJSON('bpnn.json', function(bpnndata) {
 					type : 'scatter',
 					itemStyle : {
 						normal : {
-							color : ['rgba(255,0,0,0.5)']
+							color : ['rgba(255,0,0,1)']
 						}
 					},
 					data : function() {
@@ -127,7 +127,7 @@ $.getJSON('bpnn.json', function(bpnndata) {
 					type : 'scatter',
 					itemStyle : {
 						normal : {
-							color : ['rgba(0,180,120,0.5)']
+							color : ['rgba(0,180,120,1)']
 						}
 					},
 					data : function() {

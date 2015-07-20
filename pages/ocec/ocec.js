@@ -37,19 +37,20 @@ function loadOcec(ocecdata) {
 					list.push([t, ocecdata.sequence.data[j].species[i]]);
 				}
 			}
+			/*
 			//确定y轴是哪根
 			var yIndex = 0;
 			if (ocecdata.sequence.name[i] == "EC") {
-				yIndex = 1;
+			yIndex = 1;
 			} else {
-				yIndex = 0;
-			}
+			yIndex = 0;
+			}*/
 			//series对象
 			var obj = {
 				'name' : ocecdata.sequence.name[i],
 				'type' : 'line',
 				'data' : list,
-				'yAxisIndex' : yIndex
+				'yAxisIndex' : 0
 			};
 			setSeries[i] = obj;
 		} else {
@@ -75,7 +76,7 @@ function loadOcec(ocecdata) {
 		var option = {
 			title : {
 				text : '多物种多轴时序图勾选显示 ',
-				subtext : '数据来源：毕鉴昭'
+				//subtext : '数据来源：毕鉴昭'
 			},
 			tooltip : {
 				trigger : 'item',
@@ -138,11 +139,11 @@ function loadOcec(ocecdata) {
 				type : 'value',
 				scale : true, //自动设定Y轴数值范围
 				name : ocecdata.sequence.unit[0]
-			}, {
-				type : 'value',
-				scale : true, //自动设定Y轴数值范围
-				name : ocecdata.sequence.unit[1]
-			}],
+			}/*, {
+			 type : 'value',
+			 scale : true, //自动设定Y轴数值范围
+			 name : ocecdata.sequence.unit[1]
+			 }*/],
 			series : setSeries
 		};
 

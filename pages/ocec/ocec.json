@@ -1,7 +1,7 @@
 {
 	"sequence": {
 		"name": ["OC", "EC"],
-		"unit": ["kg/year", "kg/year"],
+		"unit": ["ug/m3", "ug/m3"],
 		"data": [
 			{
 				"time": "2014-10-01 00:00:00",
@@ -107,7 +107,7 @@
 				"species": [58, 68]
 			},	{
 				"time": "2014-10-02 10:00:00",
-				"species": ["NaN", 72]
+				"species": [60, 72]
 			}
 		]
 	}

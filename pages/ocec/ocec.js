@@ -82,11 +82,13 @@ function loadOcec(ocecdata) {
 				//subtext : '数据来源：毕鉴昭'
 			},
 			tooltip : {
-				trigger : 'item',
+				trigger : 'axis',
 				formatter : function(params) {
-					var date = new Date(params.value[0]);
-					data = date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日' + date.getHours() + '时';
-					return data + '<br/>' + params.seriesName + ':' + params.value[1];
+					data = params[0].name + '<br />';
+					for (var i = 0; i < params.length; i++) {
+						data = data + params[i].seriesName + ':' + params[i].value + '<br />';
+					}
+					return data;
 				}
 			},
 			legend : {
@@ -128,7 +130,7 @@ function loadOcec(ocecdata) {
 			calculable : true,
 			dataZoom : {
 				show : true,
-				start : 60,
+				start : 75,
 				end : 100
 			},
 			xAxis : [{

@@ -30,11 +30,13 @@ function loadOcec(ocecdata) {
 			//如果该物种被选，则生成物种的对象和值
 			var list = [];
 			for (var j = 0; j < ocecdata.sequence.data.length; j++) {
-				var t = timeConvert(ocecdata.sequence.data[j].time);
+				//var t = timeConvert(ocecdata.sequence.data[j].time);
 				if (ocecdata.sequence.data[j].species[i] == "NaN") {
-					list.push([t, '-']);
+					//list.push([t, '-']);
+					list.push('-');
 				} else {
-					list.push([t, ocecdata.sequence.data[j].species[i]]);
+					//list.push([t, ocecdata.sequence.data[j].species[i]]);
+					list.push(ocecdata.sequence.data[j].species[i]);
 				}
 			}
 			/*
@@ -50,7 +52,8 @@ function loadOcec(ocecdata) {
 				'name' : ocecdata.sequence.name[i],
 				'type' : 'line',
 				'data' : list,
-				'yAxisIndex' : 0
+				'yAxisIndex' : 0,
+				'barCategoryGap' : '50%' //for bar
 			};
 			setSeries[i] = obj;
 		} else {
@@ -68,7 +71,7 @@ function loadOcec(ocecdata) {
 	});
 
 	// 使用
-	require(['echarts', 'echarts/chart/line'], function(ec) {
+	require(['echarts', 'echarts/chart/line', 'echarts/chart/bar'], function(ec) {
 
 		// 基于准备好的dom，初始化echarts图表
 		var myChart = ec.init(document.getElementById('container'), 'macarons');
@@ -110,6 +113,10 @@ function loadOcec(ocecdata) {
 					dataView : {
 						show : true
 					},
+					magicType : {
+						show : true,
+						type : ['line', 'bar', 'stack', 'tiled']
+					},
 					restore : {
 						show : true
 					},
@@ -125,15 +132,24 @@ function loadOcec(ocecdata) {
 				end : 100
 			},
 			xAxis : [{
-				type : 'time',
+				type : 'category',
+				//type : 'time',
 				splitNumber : 12,
-				axisLabel : {
-					formatter : function(value) {
-						var date = new Date(value);
-						data = (date.getMonth() + 1) + '/' + date.getDate() + ' ' + date.getHours() + ':00';
-						return data;
+				/*axisLabel : {
+				 formatter : function(value) {
+				 var date = new Date(value);
+				 data = (date.getMonth() + 1) + '/' + date.getDate() + ' ' + date.getHours() + ':00';
+				 return data;
+				 }
+				 }*/
+				boundaryGap : false,
+				data : function() {
+					var list = [];
+					for (var i = 0; i < ocecdata.sequence.data.length; i++) {
+						list.push(ocecdata.sequence.data[i].time);
 					}
-				}
+					return list;
+				}()
 			}],
 			yAxis : [{
 				type : 'value',

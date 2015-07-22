@@ -87,7 +87,7 @@ function loadOcec(ocecdata) {
 
 		var option = {
 			title : {
-				text : '多物种多轴时序图勾选显示 ',
+				text : ocecdata.sequence.title,
 				//subtext : '数据来源：毕鉴昭'
 			},
 			tooltip : {
@@ -164,7 +164,7 @@ function loadOcec(ocecdata) {
 			}],
 			yAxis : [{
 				type : 'value',
-				scale : true, //自动设定Y轴数值范围
+				scale : false, //自动设定Y轴数值范围
 				name : ocecdata.sequence.unit[0]
 			}/*, {
 			 type : 'value',

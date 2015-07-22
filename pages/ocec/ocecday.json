@@ -1,5 +1,6 @@
 {
 	"sequence": {
+		"title": "逐日时序图",
 		"name": ["OC", "EC"],
 		"unit": ["ug/m3", "ug/m3"],
 		"data": [
@@ -38,28 +39,28 @@
 				"species": [34, 38]
 			}, {
 				"time": "2014-10-12",
-				"species": [37,20]
+				"species": [37, 20]
 			}, {
 				"time": "2014-10-13",
-				"species": [33,9]
+				"species": [33, 9]
 			}, {
 				"time": "2014-10-14",
-				"species": [35,2]
+				"species": [35, 2]
 			}, {
 				"time": "2014-10-15",
-				"species": [14,2]
+				"species": [14, 2]
 			}, {
 				"time": "2014-10-16",
-				"species": [5,41]
+				"species": [5, 41]
 			}, {
 				"time": "2014-10-17",
-				"species": [35,16]
+				"species": [35, 16]
 			}, {
 				"time": "2014-10-18",
-				"species": [48,2]
+				"species": [48, 2]
 			}, {
 				"time": "2014-10-19",
-				"species": [22,19]
+				"species": [22, 19]
 			}, {
 				"time": "2014-10-20",
 				"species": [14, 18]

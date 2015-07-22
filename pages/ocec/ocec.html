@@ -11,11 +11,19 @@
 </head>
 <body>
 	<div id="selectdiv" style="margin:10px" align="left">
-		<p>说明：选择右上角工具栏的“<font color="purple">折线图</font>”和“<font color="orange">柱状图</font>”符号在两种图之间切换；“<font color="blue">三横杠</font>”和“<font color="green">三竖杠</font>”符号用于切换柱状图的堆积方式。</p>
+		<p>
+			说明：选择右上角工具栏的“<font color="purple">折线图</font>”和“<font color="orange">柱状图</font>”符号在两种图之间切换；“<font color="blue">三横杠</font>”和“<font color="green">三竖杠</font>”符号用于切换柱状图的堆积方式。
+		</p>
 		请勾选需要显示的物种，并点击刷新：
 		<br />
 		<br />
 		<form id="selectform">
+			<select id="time">
+				<option value="逐小时" selected="selected">逐小时</option>
+				<option value="逐日">逐日</option>
+			</select>
+			<br />
+			<br />
 			<input type="checkbox" id="OC" name="OC"/>
 			OC
 			<input type="checkbox" id="EC" name="EC"/>

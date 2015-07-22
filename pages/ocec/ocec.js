@@ -1,6 +1,15 @@
 function initOcec() {
+
+	var objSelect = document.getElementById('time');
+	var selectIndex = objSelect.selectedIndex;
+	if (selectIndex == 0) {//选择逐小时
+		var fileName = 'ocec.json';
+	} else if (selectIndex == 1) {//选择逐日
+		var fileName = 'ocecday.json';
+	}
+
 	//加载ECharts
-	$.getJSON('ocec.json', function(data) {
+	$.getJSON(fileName, function(data) {
 		loadOcec(data);
 	});
 }

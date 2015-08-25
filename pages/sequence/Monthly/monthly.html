@@ -6,6 +6,7 @@
 	<!-- ECharts单文件引入 -->
 	<script src="../../../src/echarts-2.2.4/build/dist/echarts.js"></script>
 	<script src="monthlyConfig.js"></script>
+	<script src="../js/loadBar.js"></script>
 </head>
 <body>
 	<div id="selectdiv" style="margin:10px" align="left">
@@ -21,13 +22,13 @@
 				<option value="2007">2007</option>
 				<option value="2008">2008</option>
 			</select>
-			<input type="button" value="刷新" style="width:50px;height:30px" onclick="initSequence();"/>
+			<input type="button" value="刷新" style="width:50px;height:30px" onclick="initBar();"/>
 		</form>
 	</div>
 	<div align="center">
 		<div id="container" style="width:80%;height:500px"></div>
 	</div>
 	<script type="text/javascript">
-		initSequence();
+		initBar();
 	</script>
 </body>

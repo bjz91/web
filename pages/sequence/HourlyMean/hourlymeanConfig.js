@@ -1,11 +1,27 @@
 function initBar() {
 
-	var objMonth = document.getElementById('month');
-	var monthIndex = objMonth.selectedIndex;
-	var month = objMonth.options[monthIndex].text;
-	var fileName = 'data/' + month + '.json';
+	/*--------- 选择文件 ---------*/
+	var date = document.getElementById('user_date').value;
+	var year = date.substr(0, 4);
+	var month = date.substr(5, 2);
+	var fileName = 'data/' + year + '/' + month + '.json';
+
+	/*--------- 判断复选框是否选中 ---------*/
+	var plotBool = [];
+	//OC
+	if (document.getElementById("OC").checked) {
+		plotBool.push(new Boolean(1));
+	} else {
+		plotBool.push(new Boolean(0));
+	}
+	//EC
+	if (document.getElementById("EC").checked) {
+		plotBool.push(new Boolean(1));
+	} else {
+		plotBool.push(new Boolean(0));
+	}
 
 	$.getJSON(fileName, function(data) {
-		loadBar(data);
+		loadBar(data, plotBool);
 	});
 }

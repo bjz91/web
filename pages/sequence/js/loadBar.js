@@ -1,4 +1,4 @@
-function loadBar(data) {
+function loadBar(data, plotBool) {
 
 	// 路径配置
 	require.config({
@@ -10,16 +10,33 @@ function loadBar(data) {
 	// 使用
 	require(['echarts', 'echarts/chart/line', 'echarts/chart/bar'], function(ec) {
 
-		/*---------- 准备Series ----------*/
-		var oriSeries = [];
-		for (var i = 0; i < data.bartime.name.length; i++) {
-			var obj = {
-				'name' : data.bartime.name[i],
-				'type' : 'line',
-				'data' : data.bartime.value[i],
-				'barCategoryGap' : '50%' //柱间间隔
-			};
-			oriSeries.push(obj);
+		/*--------- 设定Series ---------*/
+		var num = 0;
+		var setSeries = new Array();
+		for (var i = 0; i < plotBool.length; i++) {
+			if (plotBool[i] == true) {
+				//如果该物种被选，则生成物种的对象和值
+				var list = [];
+				for (var j = 0; j < data.bartime.value[0].length; j++) {
+					if (data.bartime.value[i][j] == "NaN") {
+						list.push('-');
+					} else {
+						list.push(data.bartime.value[i][j]);
+					}
+				}
+				//series对象
+				var obj = {
+					'name' : data.bartime.name[i],
+					'type' : 'line',
+					'data' : list,
+					'yAxisIndex' : 0,
+					'barCategoryGap' : '50%' //for bar
+				};
+				setSeries[i] = obj;
+			} else {
+				//如果该物种没有被选，则数据设为空
+				setSeries[i] = [];
+			}
 		}
 
 		/*---------- 基于准备好的dom，初始化echarts图表 ----------*/
@@ -35,7 +52,16 @@ function loadBar(data) {
 			},
 			legend : {
 				x : 'right',
-				'data' : data.bartime.name,
+				//按照被选物种自动增减图例
+				data : function() {
+					var list = [];
+					for (var i = 0; i < data.bartime.name.length; i++) {
+						if (plotBool[i] == true) {
+							list.push(data.bartime.name[i]);
+						}
+					}
+					return list;
+				}()
 			},
 			toolbox : {
 				'show' : true,
@@ -78,7 +104,7 @@ function loadBar(data) {
 				'type' : 'value',
 				'name' : 'ug/m3'
 			},
-			series : oriSeries
+			series : setSeries
 		};
 
 		/*---------- 为echarts对象加载数据 ----------*/

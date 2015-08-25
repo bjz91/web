@@ -1,17 +1,10 @@
 function initSequence() {
 
-	//选择逐小时
-	var fileName = 'hourly.json';
-
-	/* 逐日和逐小时切换（暂时取消此功能）
-	 var objSelect = document.getElementById('time');
-	 var selectIndex = objSelect.selectedIndex;
-	 if (selectIndex == 0) {//选择逐小时
-	 var fileName = 'hourly.json';
-	 } else if (selectIndex == 1) {//选择逐日
-	 var fileName = 'daily.json';
-	 }
-	 */
+	/*--------- 选择文件 ---------*/
+	var date = document.getElementById('user_date').value;
+	var year = date.substr(0, 4);
+	var month = date.substr(5, 2);
+	var fileName = 'data/' + year + '/' + month + '.json';
 
 	/*--------- 判断复选框是否选中 ---------*/
 	var plotBool = [];
@@ -28,7 +21,7 @@ function initSequence() {
 		plotBool.push(new Boolean(0));
 	}
 
-	//加载ECharts
+	/*--------- 加载ECharts ---------*/
 	$.getJSON(fileName, function(data) {
 		loadSequence(data, plotBool);
 	});

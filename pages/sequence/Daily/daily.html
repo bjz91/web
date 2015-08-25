@@ -15,21 +15,22 @@
 		<p>
 			说明：选择右上角工具栏的“<font color="purple">折线图</font>”和“<font color="orange">柱状图</font>”符号在两种图之间切换；“<font color="blue">三横杠</font>”和“<font color="green">三竖杠</font>”符号用于切换柱状图的堆积方式。
 		</p>
-		请勾选需要显示的物种，并点击刷新：
-		<br />
-		<br />
 		<form id="selectform">
-			<!--逐日和逐小时切换（暂时取消此功能）
-			<select id="time">
-			<option value="逐小时" selected="selected">逐小时</option>
-			<option value="逐日">逐日</option>
-			</select>
+			请勾选需要显示的物种：
 			<br />
-			<br />-->
 			<input type="checkbox" id="OC" name="OC"/>
-			OC
+			物种1
 			<input type="checkbox" id="EC" name="EC"/>
-			EC
+			物种2
+			<br />
+			<br />
+			请选择时间：
+			<br />
+			<select id="year">
+				<option value="2013">2013</option>
+				<option value="2014" selected="selected">2014</option>
+			</select>
+			年
 			<br />
 			<br />
 			<input type="button" value="刷新" style="width:50px;height:30px" onclick="initSequence();"/>

@@ -1,7 +1,7 @@
 {
 	"sequence": {
-		"title": "逐日时序图",
-		"name": ["OC", "EC"],
+		"title": "2013年逐日时序图",
+		"name": ["物种1", "物种2"],
 		"unit": ["ug/m3", "ug/m3"],
 		"data": [
 			{

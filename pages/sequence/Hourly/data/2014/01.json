@@ -1,7 +1,7 @@
 {
 	"sequence": {
-		"title": "逐小时时序图",
-		"name": ["OC", "EC"],
+		"title": "2014年1月逐小时时序图",
+		"name": ["物种1", "物种2"],
 		"unit": ["ug/m3", "ug/m3"],
 		"data": [
 			{

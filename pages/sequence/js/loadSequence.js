@@ -1,35 +1,4 @@
-function initOcec() {
-
-	var objSelect = document.getElementById('time');
-	var selectIndex = objSelect.selectedIndex;
-	if (selectIndex == 0) {//选择逐小时
-		var fileName = 'ocec.json';
-	} else if (selectIndex == 1) {//选择逐日
-		var fileName = 'ocecday.json';
-	}
-
-	//加载ECharts
-	$.getJSON(fileName, function(data) {
-		loadOcec(data);
-	});
-}
-
-function loadOcec(ocecdata) {
-
-	/*--------- 判断复选框是否选中 ---------*/
-	var plotBool = [];
-	//OC
-	if (document.getElementById("OC").checked) {
-		plotBool.push(new Boolean(1));
-	} else {
-		plotBool.push(new Boolean(0));
-	}
-	//EC
-	if (document.getElementById("EC").checked) {
-		plotBool.push(new Boolean(1));
-	} else {
-		plotBool.push(new Boolean(0));
-	}
+function loadSequence(ocecdata, plotBool) {
 
 	/*--------- 设定Series ---------*/
 	var num = 0;
@@ -75,7 +44,7 @@ function loadOcec(ocecdata) {
 	// 路径配置
 	require.config({
 		paths : {
-			echarts : '../../src/echarts-2.2.4/build/dist'
+			echarts : '../../../src/echarts-2.2.4/build/dist'
 		}
 	});
 

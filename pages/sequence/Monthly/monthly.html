@@ -2,10 +2,10 @@
 <head>
 	<meta charset="utf-8">
 	<title>ECharts</title>
-	<script src="../../src/jquery-2.1.4.min.js" type="text/javascript"></script>
+	<script src="../../../src/jquery-2.1.4.min.js" type="text/javascript"></script>
 	<!-- ECharts单文件引入 -->
-	<script src="../../src/echarts-2.2.4/build/dist/echarts.js"></script>
-	<script src="bartime.js"></script>
+	<script src="../../../src/echarts-2.2.4/build/dist/echarts.js"></script>
+	<script src="monthlyConfig.js"></script>
 </head>
 <body>
 	<div id="selectdiv" style="margin:10px" align="left">
@@ -20,7 +20,7 @@
 				<option value="2006">2006</option>
 				<option value="2007">2007</option>
 				<option value="2008">2008</option>
-				<input type="button" value="刷新" style="width:50px;height:30px" onclick="initTime();"/>
+				<input type="button" value="刷新" style="width:50px;height:30px" onclick="initSequence();"/>
 			</select>
 		</form>
 	</div>
@@ -28,6 +28,6 @@
 		<div id="container" style="width:80%;height:500px"></div>
 	</div>
 	<script type="text/javascript">
-		initTime();
+		initSequence();
 	</script>
 </body>

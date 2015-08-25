@@ -1,15 +1,15 @@
 function initSequence() {
 
 	//选择逐小时
-	var fileName = 'sequenceHourly.json';
+	var fileName = 'daily.json';
 
 	/* 逐日和逐小时切换（暂时取消此功能）
 	 var objSelect = document.getElementById('time');
 	 var selectIndex = objSelect.selectedIndex;
 	 if (selectIndex == 0) {//选择逐小时
-	 var fileName = 'sequenceHourly.json';
+	 var fileName = 'hourly.json';
 	 } else if (selectIndex == 1) {//选择逐日
-	 var fileName = 'sequenceDaily.json';
+	 var fileName = 'daily.json';
 	 }
 	 */
 

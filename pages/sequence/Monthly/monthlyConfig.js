@@ -1,12 +1,12 @@
-function initTime() {
+function initSequence() {
 
 	var objYear = document.getElementById('year');
 	var yearIndex = objYear.selectedIndex;
 	var year = objYear.options[yearIndex].text;
 	var fileName = 'data/' + year + '.json';
 	
-	$.getJSON(fileName, function(bartime) {
-		exePlot(year, bartime);
+	$.getJSON(fileName, function(data) {
+		exePlot(year, data);
 	});
 }
 
@@ -15,7 +15,7 @@ function exePlot(year, data) {
 	// 路径配置
 	require.config({
 		paths : {
-			echarts : '../../src/echarts-2.2.4/build/dist'
+			echarts : '../../../src/echarts-2.2.4/build/dist'
 		}
 	});
 
@@ -28,7 +28,7 @@ function exePlot(year, data) {
 		for (var i = 0; i < data.bartime.name.length; i++) {
 			var obj = {
 				'name' : data.bartime.name[i],
-				'type' : 'bar',
+				'type' : 'line',
 				'data' : data.bartime.value[i],
 				'barCategoryGap' : '50%' //柱间间隔
 			};

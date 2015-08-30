@@ -1,4 +1,4 @@
-function loadSequence(ocecdata, plotBool) {
+function loadSequence(data, plotBool) {
 
 	/*--------- 设定Series ---------*/
 	var num = 0;
@@ -7,27 +7,27 @@ function loadSequence(ocecdata, plotBool) {
 		if (plotBool[i] == true) {
 			//如果该物种被选，则生成物种的对象和值
 			var list = [];
-			for (var j = 0; j < ocecdata.sequence.data.length; j++) {
-				//var t = timeConvert(ocecdata.sequence.data[j].time);
-				if (ocecdata.sequence.data[j].species[i] == "NaN") {
+			for (var j = 0; j < data.data.length; j++) {
+				//var t = timeConvert(data.data[j].time);
+				if (data.data[j].species[i] == -9999) {
 					//list.push([t, '-']);
 					list.push('-');
 				} else {
-					//list.push([t, ocecdata.sequence.data[j].species[i]]);
-					list.push(ocecdata.sequence.data[j].species[i]);
+					//list.push([t, data.data[j].species[i]]);
+					list.push(data.data[j].species[i]);
 				}
 			}
 			/*
 			//确定y轴是哪根
 			var yIndex = 0;
-			if (ocecdata.sequence.name[i] == "EC") {
+			if (data.name[i] == "EC") {
 			yIndex = 1;
 			} else {
 			yIndex = 0;
 			}*/
 			//series对象
 			var obj = {
-				'name' : ocecdata.sequence.name[i],
+				'name' : data.name[i],
 				'type' : 'line',
 				'data' : list,
 				'yAxisIndex' : 0,
@@ -56,7 +56,7 @@ function loadSequence(ocecdata, plotBool) {
 
 		var option = {
 			title : {
-				text : ocecdata.sequence.title,
+				text : data.title,
 				//subtext : '数据来源：毕鉴昭'
 			},
 			tooltip : {
@@ -73,9 +73,9 @@ function loadSequence(ocecdata, plotBool) {
 				//按照被选物种自动增减图例
 				data : function() {
 					var list = [];
-					for (var i = 0; i < ocecdata.sequence.name.length; i++) {
+					for (var i = 0; i < data.name.length; i++) {
 						if (plotBool[i] == true) {
-							list.push(ocecdata.sequence.name[i]);
+							list.push(data.name[i]);
 						}
 					}
 					return list;
@@ -108,7 +108,7 @@ function loadSequence(ocecdata, plotBool) {
 			calculable : true,
 			dataZoom : {
 				show : true,
-				start : 75,
+				start : 100-(24/data.data.length)*100,
 				end : 100
 			},
 			xAxis : [{
@@ -125,8 +125,8 @@ function loadSequence(ocecdata, plotBool) {
 				boundaryGap : false,
 				data : function() {
 					var list = [];
-					for (var i = 0; i < ocecdata.sequence.data.length; i++) {
-						list.push(ocecdata.sequence.data[i].time);
+					for (var i = 0; i < data.data.length; i++) {
+						list.push(data.data[i].time);
 					}
 					return list;
 				}()
@@ -134,11 +134,11 @@ function loadSequence(ocecdata, plotBool) {
 			yAxis : [{
 				type : 'value',
 				scale : false, //自动设定Y轴数值范围
-				name : ocecdata.sequence.unit[0]
+				name : data.unit[0]
 			}/*, {
 			 type : 'value',
 			 scale : true, //自动设定Y轴数值范围
-			 name : ocecdata.sequence.unit[1]
+			 name : data.unit[1]
 			 }*/],
 			series : setSeries
 		};

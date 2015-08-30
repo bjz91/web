@@ -19,14 +19,16 @@
 			<label for="OC">请勾选需要显示的物种：</label>
 			<br />
 			<input type="checkbox" id="OC" name="OC"/>
-			物种1
+			OC
 			<input type="checkbox" id="EC" name="EC"/>
-			物种2
+			EC
+			<input type="checkbox" id="TC" name="TC"/>
+			TC
 			<br />
 			<br />
 			<label for="user_date">请选择时间：</label>
 			<br />
-			<input type="month" id="user_date" value="2014-01"/>
+			<input type="month" id="user_date" value="2015-08"/>
 			<br />
 			<br />
 			<input type="button" value="刷新" style="width:50px;height:30px" onclick="initSequence();"/>
@@ -40,6 +42,8 @@
 		var checkbox = document.getElementById("OC");
 		checkbox.setAttribute("checked", true);
 		checkbox = document.getElementById("EC");
+		checkbox.setAttribute("checked", true);
+		checkbox = document.getElementById("TC");
 		checkbox.setAttribute("checked", true);
 		initSequence();
 	</script>

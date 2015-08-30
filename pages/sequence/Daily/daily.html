@@ -19,16 +19,18 @@
 			请勾选需要显示的物种：
 			<br />
 			<input type="checkbox" id="OC" name="OC"/>
-			物种1
+			OC
 			<input type="checkbox" id="EC" name="EC"/>
-			物种2
+			EC
+			<input type="checkbox" id="TC" name="TC"/>
+			TC
 			<br />
 			<br />
 			请选择时间：
 			<br />
 			<select id="year">
-				<option value="2013">2013</option>
-				<option value="2014" selected="selected">2014</option>
+				<option value="2014">2014</option>
+				<option value="2015" selected="selected">2015</option>
 			</select>
 			年
 			<br />
@@ -44,6 +46,8 @@
 		var checkbox = document.getElementById("OC");
 		checkbox.setAttribute("checked", true);
 		checkbox = document.getElementById("EC");
+		checkbox.setAttribute("checked", true);
+		checkbox = document.getElementById("TC");
 		checkbox.setAttribute("checked", true);
 		initSequence();
 	</script>

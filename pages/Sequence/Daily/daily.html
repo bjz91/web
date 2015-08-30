@@ -28,10 +28,7 @@
 			<br />
 			请选择时间：
 			<br />
-			<select id="year">
-				<option value="2014">2014</option>
-				<option value="2015" selected="selected">2015</option>
-			</select>
+			<select id="year"></select>
 			年
 			<br />
 			<br />
@@ -49,6 +46,19 @@
 		checkbox.setAttribute("checked", true);
 		checkbox = document.getElementById("TC");
 		checkbox.setAttribute("checked", true);
+
+		//控制年份选择控件
+		var listbox = document.getElementById('year');
+		var d = new Date();
+		var nowYear = d.getFullYear();
+		for (var i = 2014; i <= nowYear; i++) {
+			var option = document.createElement("OPTION");
+			option.value = i;
+			option.text = i;
+			listbox.add(option);
+		}
+		listbox[listbox.length - 1].selected = true; //默认选中最后一年
+
 		initSequence();
 	</script>
 </body>

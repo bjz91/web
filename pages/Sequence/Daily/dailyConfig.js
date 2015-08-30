@@ -31,7 +31,7 @@ function initSequence() {
 	//getJSON异常处理
 	$.ajaxSetup({
 		error : function(x, e) {
-			alert("暂无" + year + "年" + month + "月" + "数据");
+			alert("暂无" + year + "年" + "数据");
 			return false;
 		}
 	});

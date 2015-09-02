@@ -11,6 +11,15 @@ function initSort(tag) {
 		var date = '';
 		var fileName = 'data/monthly/' + year + '/' + year + month + '.json';
 	}
+	
+	/*--------- 加载ECharts ---------*/
+	//getJSON异常处理
+	$.ajaxSetup({
+		error : function(x, e) {
+			alert("暂无数据");
+			return false;
+		}
+	});
 
 	$.getJSON(fileName, function(sortdata) {
 		loadSort(year, month, date, sortdata, tag);

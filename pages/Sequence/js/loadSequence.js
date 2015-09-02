@@ -80,6 +80,9 @@ function loadSequence(data, plotBool) {
 			},
 			toolbox : {
 				show : true,
+				orient : 'vertical',
+				x : 'right',
+				y : 'center',
 				feature : {
 					mark : {
 						show : true
@@ -105,7 +108,7 @@ function loadSequence(data, plotBool) {
 			calculable : true,
 			dataZoom : {
 				show : true,
-				start : 100-(24/data.data.length)*100,
+				start : 100 - (24 / data.data.length) * 100,
 				end : 100
 			},
 			xAxis : [{

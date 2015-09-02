@@ -16,37 +16,64 @@
 		<form id="selectform">
 			请勾选需要显示的物种：
 			<br />
-			<input type="checkbox" id="OC" name="OC"/>
-			OC
-			<input type="checkbox" id="EC" name="EC"/>
-			EC
-			<input type="checkbox" id="TC" name="TC"/>
-			TC
-			<input type="checkbox" id="BC" name="BC"/>
-			BC
 			<br />
-			<input type="checkbox" id="Cl" name="Cl"/>
-			Cl-
+			颗粒物：
+			<input type="checkbox" id="PM1" name="PM1"/>
+			PM1
+			<input type="checkbox" id="PM25" name="PM25"/>
+			PM2.5
+			<input type="checkbox" id="PM10" name="PM10"/>
+			PM10
+			<br />
+			气态污染物：
+			<input type="checkbox" id="O3" name="O3"/>
+			O3
+			<input type="checkbox" id="CO" name="CO"/>
+			CO
+			<input type="checkbox" id="NO" name="NO"/>
+			NO
 			<input type="checkbox" id="NO2" name="NO2"/>
 			NO2
-			<input type="checkbox" id="Br" name="Br"/>
-			Br
-			<input type="checkbox" id="NO3" name="NO3"/>
-			NO3-
-			<input type="checkbox" id="SO4" name="SO4"/>
-			SO42-
-			<input type="checkbox" id="Li" name="Li"/>
-			Li
-			<input type="checkbox" id="Na" name="Na"/>
-			Na+
+			<input type="checkbox" id="NH3" name="NH3"/>
+			NH3
+			<input type="checkbox" id="N" name="N"/>
+			总氮
+			<br />
+			颗粒物阳离子：
 			<input type="checkbox" id="NH4" name="NH4"/>
 			NH4+
 			<input type="checkbox" id="K" name="K"/>
 			K+
+			<input type="checkbox" id="Ca" name="Ca"/>
+			Ca2+
 			<input type="checkbox" id="Mg" name="Mg"/>
 			Mg2+
-			<input type="checkbox" id="Ca" name="Ca"/>
-			Ca+
+			<input type="checkbox" id="Na" name="Na"/>
+			Na+
+			<br />
+			颗粒物阴离子：
+			<input type="checkbox" id="SO4" name="SO4"/>
+			SO42-
+			<input type="checkbox" id="NO3" name="NO3"/>
+			NO3-
+			<input type="checkbox" id="Cl" name="Cl"/>
+			Cl-
+			<br />
+			颗粒物含碳组分：
+			<input type="checkbox" id="OC" name="OC"/>
+			OC
+			<input type="checkbox" id="EC" name="EC"/>
+			EC
+			<input type="checkbox" id="BC" name="BC"/>
+			BC
+			<input type="checkbox" id="TC" name="TC"/>
+			TC
+			<br />
+			其他（正式数据里没有）： <!--为了保证Json读取正确，Br和Li暂时显示出来-->
+			<input type="checkbox" id="Br" name="Br"/>
+			Br
+			<input type="checkbox" id="Li" name="Li"/>
+			Li
 			<br />
 			<input onclick="checkAllaction(1)" type="button" value="全选" />
 			<input onclick="checkAllaction(3)" type="button" value="反选" />
@@ -66,36 +93,11 @@
 	</div>
 	<script>
 		//控制Checkboxes默认选中状态
-		/*
-		 var checkbox = document.getElementById("OC");
-		 checkbox.setAttribute("checked", true);
-		 checkbox = document.getElementById("EC");
-		 checkbox.setAttribute("checked", true);
-		 checkbox = document.getElementById("TC");
-		 checkbox.setAttribute("checked", true);*/
-
-		var checkbox = document.getElementById("Cl");
-		checkbox.setAttribute("checked", true);
-		checkbox = document.getElementById("NO2");
-		checkbox.setAttribute("checked", true);
-		checkbox = document.getElementById("Br");
-		checkbox.setAttribute("checked", true);
-		checkbox = document.getElementById("NO3");
-		checkbox.setAttribute("checked", true);
-		checkbox = document.getElementById("SO4");
-		checkbox.setAttribute("checked", true);
-		checkbox = document.getElementById("Li");
-		checkbox.setAttribute("checked", true);
-		checkbox = document.getElementById("Na");
-		checkbox.setAttribute("checked", true);
-		checkbox = document.getElementById("NH4");
-		checkbox.setAttribute("checked", true);
-		checkbox = document.getElementById("K");
-		checkbox.setAttribute("checked", true);
-		checkbox = document.getElementById("Mg");
-		checkbox.setAttribute("checked", true);
-		checkbox = document.getElementById("Ca");
-		checkbox.setAttribute("checked", true);
+		var selectSpecies = ["Cl", "NO3", "SO4"];
+		for (var i = 0; i < selectSpecies.length; i++) {
+			var checkbox = document.getElementById(selectSpecies[i]);
+			checkbox.setAttribute("checked", true);
+		}
 
 		initSequence();
 	</script>

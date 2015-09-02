@@ -102,6 +102,7 @@ function initSequence() {
 			return false;
 		}
 	});
+	
 	$.getJSON(fileName, function(data) {
 		loadSequence(data, plotBool);
 	});

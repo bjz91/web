@@ -8,12 +8,9 @@ function loadSequence(data, plotBool) {
 			//如果该物种被选，则生成物种的对象和值
 			var list = [];
 			for (var j = 0; j < data.data.length; j++) {
-				//var t = timeConvert(data.data[j].time);
 				if (data.data[j].species[i] == -9999) {
-					//list.push([t, '-']);
 					list.push('-');
 				} else {
-					//list.push([t, data.data[j].species[i]]);
 					list.push(data.data[j].species[i]);
 				}
 			}
@@ -64,7 +61,7 @@ function loadSequence(data, plotBool) {
 				formatter : function(params) {
 					data = params[0].name + '<br />';
 					for (var i = 0; i < params.length; i++) {
-						data = data + params[i].seriesName + ':' + params[i].value + '<br />';
+						data = data + params[i].seriesName + ' : ' + params[i].value + '<br />';
 					}
 					return data;
 				}

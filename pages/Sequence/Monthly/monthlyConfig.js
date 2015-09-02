@@ -22,6 +22,14 @@ function initBar() {
 	}
 
 	/*--------- 加载ECharts ---------*/
+	//getJSON异常处理
+	$.ajaxSetup({
+		error : function(x, e) {
+			alert("暂无" + year + "年" + "数据");
+			return false;
+		}
+	});
+
 	$.getJSON(fileName, function(data) {
 		loadBar(data, plotBool);
 	});

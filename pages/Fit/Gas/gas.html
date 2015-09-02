@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title>ECharts</title>
+	<script src="../../../src/jquery-2.1.4.min.js" type="text/javascript"></script>
+	<!-- ECharts单文件引入 -->
+	<script src="../../../src/echarts-2.2.4/build/dist/echarts.js"></script>
+	<script src="initGas.js"></script>
+	<script src="../js/loadFit.js"></script>
+</head>
+<body>
+	<div id="selectdiv" style="margin:10px" align="left">
+		<form id="selectform">
+			请选择物种：
+			<br />
+			横轴：
+			<select id="Hori">
+				<option value="OC" selected="selected">OC</option>
+				<option value="BC">BC</option>
+			</select>
+			纵轴：
+			<select id="Ver">
+				<option value="EC" selected="selected">EC</option>
+				<option value="TC">TC</option>
+			</select>
+			<br />
+			<br />
+			<label for="user_date">请选择时间：</label>
+			<br />
+			<input type="month" id="user_date" value="2015-08"/>
+			<br />
+			<br />
+			<input type="button" value="刷新" style="width:50px;height:30px" onclick="initGas();"/>
+		</form>
+	</div>
+	<div align="center">
+		<div id="container" style="width:70%;height:500px"></div>
+	</div>
+	<div id="firdiv" align="center">
+		R2 =
+		<input type="text" id="R2" />
+		; Y =
+		<input type="text" id="k" />
+		X
+		+
+		<input type="text" id="b" />
+	</div>
+	<script type="text/javascript">
+		initGas();
+	</script>
+</body>

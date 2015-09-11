@@ -17,64 +17,92 @@
 			请勾选需要显示的物种：
 			<br />
 			<br />
-			颗粒物：
-			<input type="checkbox" id="PM1" name="PM1"/>
-			PM1
-			<input type="checkbox" id="PM25" name="PM25"/>
-			PM2.5
-			<input type="checkbox" id="PM10" name="PM10"/>
-			PM10
-			<br />
-			气态污染物：
-			<input type="checkbox" id="O3" name="O3"/>
-			O3
-			<input type="checkbox" id="CO" name="CO"/>
-			CO
-			<input type="checkbox" id="NO" name="NO"/>
-			NO
-			<input type="checkbox" id="NO2" name="NO2"/>
-			NO2
-			<input type="checkbox" id="NH3" name="NH3"/>
-			NH3
-			<input type="checkbox" id="N" name="N"/>
-			总氮
-			<br />
-			颗粒物阳离子：
-			<input type="checkbox" id="NH4" name="NH4"/>
-			NH4+
-			<input type="checkbox" id="K" name="K"/>
-			K+
-			<input type="checkbox" id="Ca" name="Ca"/>
-			Ca2+
-			<input type="checkbox" id="Mg" name="Mg"/>
-			Mg2+
-			<input type="checkbox" id="Na" name="Na"/>
-			Na+
-			<br />
-			颗粒物阴离子：
-			<input type="checkbox" id="SO4" name="SO4"/>
-			SO42-
-			<input type="checkbox" id="NO3" name="NO3"/>
-			NO3-
-			<input type="checkbox" id="Cl" name="Cl"/>
-			Cl-
-			<br />
-			颗粒物含碳组分：
-			<input type="checkbox" id="OC" name="OC"/>
-			OC
-			<input type="checkbox" id="EC" name="EC"/>
-			EC
-			<input type="checkbox" id="BC" name="BC"/>
-			BC
-			<input type="checkbox" id="TC" name="TC"/>
-			TC
-			<br />
-			其他（正式数据里没有）： <!--为了保证Json读取正确，Br和Li暂时显示出来-->
-			<input type="checkbox" id="Br" name="Br"/>
-			Br
-			<input type="checkbox" id="Li" name="Li"/>
-			Li
-			<br />
+			<table border="0">
+				<tr>
+					<th> 颗粒物： </th>
+					<td>
+					<input type="checkbox" id="PM1" name="PM1"/>
+					PM1 </td>
+					<td>
+					<input type="checkbox" id="PM25" name="PM25"/>
+					PM2.5 </td>
+					<td>
+					<input type="checkbox" id="PM10" name="PM10"/>
+					PM10 </td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<th> 气态污染物： </th>
+					<td>
+					<input type="checkbox" id="O3" name="O3"/>
+					O3 </td>
+					<td>
+					<input type="checkbox" id="CO" name="CO"/>
+					CO </td>
+					<td>
+					<input type="checkbox" id="NO" name="NO"/>
+					NO </td>
+					<td>
+					<input type="checkbox" id="NO2" name="NO2"/>
+					NO2 </td>
+					<td>
+					<input type="checkbox" id="NH3" name="NH3"/>
+					NH3 </td>
+					<td>
+					<input type="checkbox" id="N" name="N"/>
+					总氮 </td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<th> 颗粒物含碳组分： </th>
+					<td>
+					<input type="checkbox" id="OC" name="OC"/>
+					OC </td>
+					<td>
+					<input type="checkbox" id="EC" name="EC"/>
+					EC </td>
+					<td>
+					<input type="checkbox" id="BC" name="BC"/>
+					BC </td>
+					<td>
+					<input type="checkbox" id="TC" name="TC"/>
+					TC</td>
+				</tr>
+				<tr>
+					<th>颗粒物阳离子： </th>
+					<td>
+					<input type="checkbox" id="NH4" name="NH4"/>
+					NH4+ </td>
+					<td>
+					<input type="checkbox" id="K" name="K"/>
+					K+ </td>
+					<td>
+					<input type="checkbox" id="Ca" name="Ca"/>
+					Ca2+ </td>
+					<td>
+					<input type="checkbox" id="Mg" name="Mg"/>
+					Mg2+ </td>
+					<td>
+					<input type="checkbox" id="Na" name="Na"/>
+					Na+ </td>
+					<td>&nbsp;</td>
+					<td>&nbsp;</td>
+					<th>颗粒物阴离子： </th>
+					<td>
+					<input type="checkbox" id="SO4" name="SO4"/>
+					SO42- </td>
+					<td>
+					<input type="checkbox" id="NO3" name="NO3"/>
+					NO3- </td>
+					<td>
+					<input type="checkbox" id="Cl" name="Cl"/>
+					Cl- </td>
+				</tr>
+			</table>
+			<!--为了保证Json读取正确，Br和Li暂时显示出来-->
+			<input type="hidden" id="Br" name="Br"/>
+			<input type="hidden" id="Li" name="Li"/>
 			<input onclick="checkAllaction(1)" type="button" value="全选" />
 			<input onclick="checkAllaction(3)" type="button" value="反选" />
 			<input onclick="checkAllaction(2)" type="button" value="清空" />

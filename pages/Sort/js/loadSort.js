@@ -75,8 +75,8 @@ function loadSort(year, month, date, sortdata, tag) {
 			xAxis : [{
 				type : 'category',
 				data : newName,
-				axisLabel:{
-					interval:'auto' //暂时没想到好的方法！！！！！！！
+				axisLabel : {
+					interval : 'auto' //暂时没想到好的方法！！！！！！！
 				}
 			}],
 			yAxis : [{
@@ -91,7 +91,7 @@ function loadSort(year, month, date, sortdata, tag) {
 						color : function(params) {
 							// build a color map as your need.
 							// macarons主题颜色列表
-							var colorList = ['#2ec7c9', '#b6a2de', '#5ab1ef', '#ffb980', '#d87a80', '#8d98b3', '#e5cf0d', '#97b552', '#95706d', '#dc69aa'];
+							var colorList = ['#2ec7c9', '#b6a2de', '#5ab1ef', '#ffb980', '#d87a80', '#8d98b3', '#e5cf0d', '#97b552', '#95706d', '#dc69aa', '#07a2a4', '#9a7fd1', '#588dd5', '#f5994e', '#c05050'];
 							return colorList[params.dataIndex]
 						}
 					}
@@ -142,7 +142,7 @@ function loadSort(year, month, date, sortdata, tag) {
 						color : function(params) {
 							// build a color map as your need.
 							// macarons主题颜色列表
-							var colorList = ['#2ec7c9', '#b6a2de', '#5ab1ef', '#ffb980', '#d87a80', '#8d98b3', '#e5cf0d', '#97b552', '#95706d', '#dc69aa'];
+							var colorList = ['#2ec7c9', '#b6a2de', '#5ab1ef', '#ffb980', '#d87a80', '#8d98b3', '#e5cf0d', '#97b552', '#95706d', '#dc69aa', '#07a2a4', '#9a7fd1', '#588dd5', '#f5994e', '#c05050'];
 							return colorList[params.dataIndex]
 						}
 					}

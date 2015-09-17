@@ -121,10 +121,11 @@ function loadSort(year, month, date, sortdata, tag) {
 						show : true,
 						readOnly : false
 					},
-					magicType : {
-						show : true,
-						type : ['pie', 'funnel']
-					},
+					/*
+					 magicType : {
+					 show : true,
+					 type : ['pie', 'funnel']
+					 },*/
 					restore : {
 						show : true
 					},
@@ -151,8 +152,8 @@ function loadSort(year, month, date, sortdata, tag) {
 				center : ['50%', '50%'],
 				roseType : 'radius',
 				x : '0%', // for funnel
-				sort : 'descending', // for funnel
-				maxSize : '100%', // for funnel
+				//sort : 'descending', // for funnel
+				//maxSize : '100%', // for funnel
 				data : function() {
 					var list = [];
 					for (var i = 0; i < newData.length; i++) {

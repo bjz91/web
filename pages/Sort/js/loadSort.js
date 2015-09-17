@@ -1,8 +1,8 @@
 function loadSort(year, month, date, sortdata, tag) {
 
 	/*------------ 排序 ------------*/
-	var newData = sortdata.barsort.data;
-	var newName = sortdata.barsort.name;
+	var newData = sortdata.data;
+	var newName = sortdata.name;
 	var temp;
 
 	for (var i = 0; i < newData.length - 1; i++) {
@@ -43,7 +43,7 @@ function loadSort(year, month, date, sortdata, tag) {
 
 		var option = {
 			title : {
-				text : sortdata.barsort.title,
+				text : sortdata.title,
 				//subtext : '数据来源：毕鉴昭'
 			},
 			tooltip : {
@@ -74,7 +74,10 @@ function loadSort(year, month, date, sortdata, tag) {
 			calculable : true,
 			xAxis : [{
 				type : 'category',
-				data : newName
+				data : newName,
+				axisLabel:{
+					interval:'auto' //暂时没想到好的方法！！！！！！！
+				}
 			}],
 			yAxis : [{
 				type : 'value',
@@ -106,7 +109,7 @@ function loadSort(year, month, date, sortdata, tag) {
 			legend : {
 				x : 'center',
 				y : 'bottom',
-				data : sortdata.barsort.name
+				data : sortdata.name
 			},
 			toolbox : {
 				show : true,

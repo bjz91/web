@@ -90,6 +90,16 @@ function loadComponent(bardata, piedata, piedata2) {
 				name : bardata.bar.feature[0],
 				type : 'bar',
 				barCategoryGap : '50%',
+				itemStyle : {
+					normal : {
+						label : {
+							show : true,
+							formatter : function(params) {
+								return params.value.toFixed(2);
+							}
+						}
+					}
+				},
 				data : function() {
 					var list = [];
 					for (var i = 0; i < bardata.bar.data.value.length; i++) {
@@ -153,11 +163,13 @@ function loadComponent(bardata, piedata, piedata2) {
 				type : 'pie',
 				//selectedMode : 'single',
 				radius : [0, 70],
-
 				itemStyle : {
 					normal : {
 						label : {
-							position : 'inner'
+							position : 'inner',
+							formatter : function(params) {
+								return params.name + ' (' + (params.percent - 0).toFixed(2) + '%' + ')';
+							}
 						},
 						labelLine : {
 							show : false
@@ -181,6 +193,15 @@ function loadComponent(bardata, piedata, piedata2) {
 				radius : [100, 140],
 				//radius : '55%',
 				center : ['50%', '50%'],
+				itemStyle : {
+					normal : {
+						label : {
+							formatter : function(params) {
+								return params.name + ' (' + (params.percent - 0).toFixed(2) + '%' + ')';
+							}
+						}
+					}
+				},
 				data : function() {
 					var list = [];
 					for (var i = 0; i < piedata.pie.subspecies[0].value.length; i++) {

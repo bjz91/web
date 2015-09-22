@@ -93,6 +93,12 @@ function loadSort(year, month, date, sortdata, tag) {
 							// macarons主题颜色列表
 							var colorList = ['#2ec7c9', '#b6a2de', '#5ab1ef', '#ffb980', '#d87a80', '#8d98b3', '#e5cf0d', '#97b552', '#95706d', '#dc69aa', '#07a2a4', '#9a7fd1', '#588dd5', '#f5994e', '#c05050'];
 							return colorList[params.dataIndex]
+						},
+						label : {
+							show : true,
+							formatter : function(params) {
+								return params.value.toFixed(2);
+							}
 						}
 					}
 				},
@@ -145,7 +151,12 @@ function loadSort(year, month, date, sortdata, tag) {
 							// macarons主题颜色列表
 							var colorList = ['#2ec7c9', '#b6a2de', '#5ab1ef', '#ffb980', '#d87a80', '#8d98b3', '#e5cf0d', '#97b552', '#95706d', '#dc69aa', '#07a2a4', '#9a7fd1', '#588dd5', '#f5994e', '#c05050'];
 							return colorList[params.dataIndex]
-						}
+						},
+						label : {
+							formatter : function(params) {
+								return params.name + ' (' + (params.percent - 0).toFixed(2) + '%' + ')';
+							}
+						},
 					}
 				},
 				radius : [30, 110],

@@ -21,9 +21,10 @@ $.getJSON('pie.json', function(piedata) {
 				trigger : 'item',
 				formatter : function(params) {
 					if (params.indicator2) {// is edge
-						return params.value.weight;
+						return params.indicator + ' 传至 ' + params.indicator2 + ' : ' + params.value.weight.toFixed(3);
 					} else {// is node
-						return params.name
+						//inValue是传出，outValue是传入？
+						return params.name + '<br />' + '传出： ' + params.data.inValue.toFixed(3) + '<br />' + '传入： ' + params.data.outValue.toFixed(3);
 					}
 				}
 			},
@@ -101,7 +102,7 @@ $.getJSON('pie.json', function(piedata) {
 			},
 			tooltip : {
 				trigger : 'item',
-				formatter : "{a} <br/>{b} : {c} ({d}%)"
+				formatter : "{a} <br/>{b} : {d}%"
 			},
 			legend : {
 				orient : 'vertical',
@@ -114,6 +115,15 @@ $.getJSON('pie.json', function(piedata) {
 				type : 'pie',
 				radius : '55%',
 				center : ['50%', '50%'],
+				itemStyle : {
+					normal : {
+						label : {
+							formatter : function(params) {
+								return params.name + ' (' + (params.percent - 0).toFixed(2) + '%' + ')';
+							}
+						}
+					}
+				},
 				data : function() {
 					var list = [];
 					for (var i = 0; i < piedata.pie.subspecies[0].value.length; i++) {
@@ -131,26 +141,9 @@ $.getJSON('pie.json', function(piedata) {
 		myChartPie.setOption(optionPie);
 
 		var ecConfig = require('echarts/config');
-		function eConsole(param) {
-			//画物种
-			var newOptionPie = myChartPie.getOption();
-			newOptionPie.series[0].data = [];
-			for (var i = 0; i < piedata.pie.subspecies[param.dataIndex].value.length; i++) {
-				var obj = {
-					value : piedata.pie.subspecies[param.dataIndex].value[i],
-					name : piedata.pie.subspecies[param.dataIndex].name[i],
-				};
-				newOptionPie.series[0].data.push(obj);
-			}
-			newOptionPie.legend.data = piedata.pie.subspecies[param.dataIndex].name;
-			newOptionPie.title.text = param.dataIndex + 1 + '月详细信息';
-			myChartPie.setOption(newOptionPie, true);
 
-			console.log(param);
-		}
-
-		var ecConfig = require('echarts/config');
 		function eConsole(param) {
+
 			//画物种
 			var newOptionPie = myChartPie.getOption();
 			newOptionPie.series[0].data = [];
@@ -174,10 +167,11 @@ $.getJSON('pie.json', function(piedata) {
 			myChartPie.setOption(newOptionPie, true);
 
 			console.log(param);
+
 		}
 
 
-		myChart.on(ecConfig.EVENT.HOVER, eConsole);
+		myChart.on(ecConfig.EVENT.CLICK, eConsole);
 
 	});
 });

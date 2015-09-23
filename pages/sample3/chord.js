@@ -7,7 +7,7 @@ $.getJSON('pie.json', function(piedata) {
 	});
 
 	// 使用
-	require(['echarts', 'echarts/chart/force', 'echarts/chart/chord', 'echarts/chart/pie', 'echarts/chart/funnel'], function(ec) {
+	require(['echarts', 'echarts/chart/line', 'echarts/chart/bar', 'echarts/chart/force', 'echarts/chart/chord', 'echarts/chart/pie', 'echarts/chart/funnel'], function(ec) {
 
 		// 基于准备好的dom，初始化echarts图表
 		var myChart = ec.init(document.getElementById('container'), 'macarons');
@@ -173,6 +173,97 @@ $.getJSON('pie.json', function(piedata) {
 
 
 		myChart.on(ecConfig.EVENT.CLICK, eConsole);
+
+		var option3 = {
+			title : {
+				text : '排放源贡献比',
+				//subtext : '数据来源：毕鉴昭',
+				x : 'left'
+			},
+			tooltip : {
+				trigger : 'axis',
+				axisPointer : {// 坐标轴指示器，坐标轴触发有效
+					type : 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+				}
+			},
+			legend : {
+				data : ['本地贡献', '本省其他城市贡献', '外省贡献']
+			},
+			toolbox : {
+				show : true,
+				feature : {
+					mark : {
+						show : true
+					},
+					dataView : {
+						show : true,
+						readOnly : false
+					},
+					magicType : {
+						show : true,
+						type : ['line', 'bar', 'stack', 'tiled']
+					},
+					restore : {
+						show : true
+					},
+					saveAsImage : {
+						show : true
+					}
+				}
+			},
+			calculable : true,
+			xAxis : [{
+				type : 'value',
+				name : '百分比'
+			}],
+			yAxis : [{
+				type : 'category',
+				data : ['石家庄', '唐山', '秦皇岛', '邯郸', '邢台', '保定', '张家口', '承德', '沧州', '廊坊', '衡水']
+			}],
+			series : [{
+				name : '本地贡献',
+				type : 'bar',
+				stack : '总量',
+				itemStyle : {
+					normal : {
+						label : {
+							show : true,
+							position : 'insideRight'
+						}
+					}
+				},
+				data : [31, 35, 32, 21, 20, 40, 20, 15, 30, 23, 31]
+			}, {
+				name : '本省其他城市贡献',
+				type : 'bar',
+				stack : '总量',
+				itemStyle : {
+					normal : {
+						label : {
+							show : true,
+							position : 'insideRight'
+						}
+					}
+				},
+				data : [56, 53, 53, 69, 71, 40, 59, 71, 54, 58, 59]
+			}, {
+				name : '外省贡献',
+				type : 'bar',
+				stack : '总量',
+				itemStyle : {
+					normal : {
+						label : {
+							show : true,
+							position : 'insideRight'
+						}
+					}
+				},
+				data : [13, 12, 15, 10, 9, 20, 21, 14, 16, 19, 10]
+			}]
+		};
+
+		var myChart3 = ec.init(document.getElementById('container2'), 'macarons');
+		myChart3.setOption(option3);
 
 	});
 });

@@ -58,6 +58,9 @@ function loadSequence(data, plotBool) {
 			},
 			tooltip : {
 				trigger : 'axis',
+				axisPointer : {// 坐标轴指示器，坐标轴触发有效
+					type : 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+				},
 				formatter : function(params) {
 					data = params[0].name + '<br />';
 					for (var i = 0; i < params.length; i++) {

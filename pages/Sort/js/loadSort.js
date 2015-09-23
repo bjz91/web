@@ -24,6 +24,8 @@ function loadSort(year, month, date, sortdata, tag) {
 		}
 	}
 
+	var otherIdx = newName.indexOf('other');
+
 	/*------------ 画图 ------------*/
 
 	// 路径配置
@@ -77,7 +79,15 @@ function loadSort(year, month, date, sortdata, tag) {
 			calculable : true,
 			xAxis : [{
 				type : 'category',
-				data : newName,
+				data : function() {
+					if (otherIdx != -1) {
+						var newNameOther = newName.slice();
+						newNameOther.splice(otherIdx, 1); //删除other对应的name
+						return newNameOther;
+					} else {
+						return newName;
+					}
+				}(),
 				axisLabel : {
 					interval : 'auto' //暂时没想到好的方法！！！！！！！
 				}
@@ -95,17 +105,28 @@ function loadSort(year, month, date, sortdata, tag) {
 							// build a color map as your need.
 							// macarons主题颜色列表
 							var colorList = ['#2ec7c9', '#b6a2de', '#5ab1ef', '#ffb980', '#d87a80', '#8d98b3', '#e5cf0d', '#97b552', '#95706d', '#dc69aa', '#07a2a4', '#9a7fd1', '#588dd5', '#f5994e', '#c05050'];
+							if (otherIdx != -1) {
+								colorList.splice(otherIdx, 1); //删除other对应的颜色
+							}
 							return colorList[params.dataIndex]
 						},
 						label : {
 							show : true,
 							formatter : function(params) {
-								return params.value.toFixed(2);
+								return params.value.toFixed(3);
 							}
 						}
 					}
 				},
-				data : newData,
+				data : function() {
+					if (otherIdx != -1) {
+						var newDataOther = newData.slice();
+						newDataOther.splice(otherIdx, 1); //删除other对应的数据
+						return newDataOther;
+					} else {
+						return newData;
+					}
+				}(),
 				barCategoryGap : '50%'
 			}]
 		};

@@ -12,7 +12,8 @@ function loadBar(data, plotBool) {
 
 		/*--------- 设定Series ---------*/
 		var num = 0;
-		var setSeries = new Array();
+		var setSeries = [];
+		var legendData = [];
 		for (var i = 0; i < plotBool.length; i++) {
 			if (plotBool[i] == true) {
 				//如果该物种被选，则生成物种的对象和值
@@ -30,12 +31,16 @@ function loadBar(data, plotBool) {
 					'type' : 'line',
 					'data' : list,
 					'yAxisIndex' : 0,
+					'itemStyle' : {
+						'normal' : {
+							'barBorderRadius' : 0 //for bar，边缘取消圆角
+						}
+					},
 					'barCategoryGap' : '50%' //for bar
 				};
-				setSeries[i] = obj;
-			} else {
-				//如果该物种没有被选，则数据设为空
-				setSeries[i] = [];
+				setSeries.push(obj);
+				//图例名称
+				legendData.push(data.bartime.name[i]);
 			}
 		}
 
@@ -56,15 +61,7 @@ function loadBar(data, plotBool) {
 			legend : {
 				x : 'right',
 				//按照被选物种自动增减图例
-				data : function() {
-					var list = [];
-					for (var i = 0; i < data.bartime.name.length; i++) {
-						if (plotBool[i] == true) {
-							list.push(data.bartime.name[i]);
-						}
-					}
-					return list;
-				}()
+				data : legendData
 			},
 			toolbox : {
 				'show' : true,

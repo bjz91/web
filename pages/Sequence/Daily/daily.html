@@ -12,7 +12,7 @@
 	<!--<script src="../js/timeConvert.js" type="text/javascript"></script>-->
 </head>
 <body>
-	<h2 align="center">多物种日均变化特征</h2>
+	<h2 align="center">污染物日均变化特征</h2>
 	<div id="selectdiv" style="margin:10px" align="left">
 		<form id="selectform">
 			请勾选需要显示的物种：
@@ -20,7 +20,7 @@
 			<br />
 			<table border="0">
 				<tr align="left">
-					<th> 颗粒物： </th>
+					<th> 颗粒物质量浓度(μg/m3)： </th>
 					<td>
 					<input type="checkbox" id="PM1" name="PM1"/>
 					PM1 </td>
@@ -30,11 +30,15 @@
 					<td>
 					<input type="checkbox" id="PM10" name="PM10"/>
 					PM10 </td>
+					<td>
+					<input type="checkbox" id="PM125" name="PM125"/>
+					PM1/PM2.5 </td>
+					<td>
+					<input type="checkbox" id="PM2510" name="PM2510"/>
+					PM2.5/PM10 </td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<th> 气态污染物： </th>
+					<th> 气态污染物质量浓度(ppb)： </th>
 					<td>
 					<input type="checkbox" id="O3" name="O3"/>
 					O3 </td>
@@ -55,7 +59,7 @@
 					总氮 </td>
 				</tr>
 				<tr align="left">
-					<th>颗粒物阳离子： </th>
+					<th>颗粒物阳离子质量浓度(μg/m3)： </th>
 					<td>
 					<input type="checkbox" id="NH4" name="NH4"/>
 					NH4+ </td>
@@ -71,9 +75,11 @@
 					<td>
 					<input type="checkbox" id="Na" name="Na"/>
 					Na+ </td>
+					<td>
+					<input type="checkbox" id="TotalP" name="TotalP"/>
+					总阳离子 </td>
 					<td>&nbsp;</td>
-					<td>&nbsp;</td>
-					<th>颗粒物阴离子： </th>
+					<th>颗粒物阴离子质量浓度(μg/m3)：</th>
 					<td>
 					<input type="checkbox" id="SO4" name="SO4"/>
 					SO42- </td>
@@ -83,9 +89,12 @@
 					<td>
 					<input type="checkbox" id="Cl" name="Cl"/>
 					Cl- </td>
+					<td>
+					<input type="checkbox" id="TotalN" name="TotalN"/>
+					总阴离子 </td>
 				</tr>
 				<tr align="left">
-					<th> 颗粒物含碳组分： </th>
+					<th> 颗粒物含碳组分质量浓度(μgC/m3)：</th>
 					<td>
 					<input type="checkbox" id="OC" name="OC"/>
 					OC </td>

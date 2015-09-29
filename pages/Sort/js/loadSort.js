@@ -82,7 +82,8 @@ function loadSort(year, month, date, sortdata, tag) {
 				data : function() {
 					if (otherIdx != -1) {
 						var newNameOther = newName.slice();
-						newNameOther.splice(otherIdx, 1); //删除other对应的name
+						newNameOther.splice(otherIdx, 1);
+						//删除other对应的name
 						return newNameOther;
 					} else {
 						return newName;
@@ -94,19 +95,21 @@ function loadSort(year, month, date, sortdata, tag) {
 			}],
 			yAxis : [{
 				type : 'value',
-				name : 'ug/m3'
+				//name : 'ug/m3'
 			}],
 			series : [{
 				name : '浓度',
 				type : 'bar',
 				itemStyle : {
 					normal : {
+						barBorderRadius : 0, //边缘取消圆角
 						color : function(params) {
 							// build a color map as your need.
 							// macarons主题颜色列表
 							var colorList = ['#2ec7c9', '#b6a2de', '#5ab1ef', '#ffb980', '#d87a80', '#8d98b3', '#e5cf0d', '#97b552', '#95706d', '#dc69aa', '#07a2a4', '#9a7fd1', '#588dd5', '#f5994e', '#c05050'];
 							if (otherIdx != -1) {
-								colorList.splice(otherIdx, 1); //删除other对应的颜色
+								colorList.splice(otherIdx, 1);
+								//删除other对应的颜色
 							}
 							return colorList[params.dataIndex]
 						},
@@ -121,7 +124,8 @@ function loadSort(year, month, date, sortdata, tag) {
 				data : function() {
 					if (otherIdx != -1) {
 						var newDataOther = newData.slice();
-						newDataOther.splice(otherIdx, 1); //删除other对应的数据
+						newDataOther.splice(otherIdx, 1);
+						//删除other对应的数据
 						return newDataOther;
 					} else {
 						return newData;
@@ -178,7 +182,7 @@ function loadSort(year, month, date, sortdata, tag) {
 						},
 						label : {
 							formatter : function(params) {
-								return params.name + ' (' + (params.percent - 0).toFixed(2) + '%' + ')';
+								return params.name + '\n' + ' (' + (params.percent - 0).toFixed(2) + '%' + ')';
 							}
 						},
 					}

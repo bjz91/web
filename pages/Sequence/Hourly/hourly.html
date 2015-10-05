@@ -13,7 +13,12 @@
 </head>
 <body>
 	<h2 align="center">污染物逐时变化特征</h2>
-	<div id="selectdiv" style="margin:10px" align="left">
+	<div class="mainsel" style="border-style:solid; border-width:1px;" align="center">
+		<p>
+			点击此处显示/隐藏物种选择器
+		</p>
+	</div>
+	<div class="selectdiv" style="border-style:solid; border-width:1px;" align="left">
 		<form id="selectform">
 			请勾选需要显示的物种：
 			<br />
@@ -125,6 +130,7 @@
 			<input type="button" value="刷新" style="width:50px;height:30px" onclick="initSequence();"/>
 		</form>
 	</div>
+	<br />
 	<div align="center">
 		<div id="container" style="width:90%;height:500px"></div>
 		<br />
@@ -138,6 +144,12 @@
 		</div>
 	</div>
 	<script>
+		$(document).ready(function() {
+			$(".selectdiv").hide();
+			$(".mainsel").click(function() {
+				$(".selectdiv").toggle(300);
+			});
+		});
 		//控制Checkboxes默认选中状态
 		var selectSpecies = ["Cl", "NO3", "SO4"];
 		for (var i = 0; i < selectSpecies.length; i++) {

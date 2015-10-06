@@ -20,12 +20,9 @@
 	</div>
 	<div class="selectdiv" style="border-style:solid; border-width:1px;" align="left">
 		<form id="selectform">
-			请勾选需要显示的物种：
-			<br />
-			<br />
 			<table border="0">
 				<tr align="left">
-					<th> 颗粒物质量浓度(μg/m3)： </th>
+					<th> 颗粒物质量浓度(μg/m<sup>3</sup>)： </th>
 					<td>
 					<input type="checkbox" id="PM1" name="PM1"/>
 					PM<sub>1</sub></td>
@@ -43,7 +40,9 @@
 					PM<sub>2.5</sub>/PM<sub>10</sub></td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
-					<th> 气态污染物质量浓度(ppb)： </th>
+				</tr>
+				<tr align="left">
+					<th> 无机污染气体质量浓度(ppb)： </th>
 					<td>
 					<input type="checkbox" id="O3" name="O3"/>
 					O<sub>3</sub></td>
@@ -61,10 +60,28 @@
 					NH<sub>3</sub></td>
 					<td>
 					<input type="checkbox" id="N" name="N"/>
-					总氮 </td>
+					TN-gas </td>
 				</tr>
 				<tr align="left">
-					<th>颗粒物阳离子质量浓度(μg/m3)： </th>
+					<th> 挥发性有机气体质量浓度(ppbC)： </th>
+					<td>
+					<input type="checkbox" id="O3" name="O3"/>
+					烷烃</td>
+					<td>
+					<input type="checkbox" id="CO" name="CO"/>
+					烯烃 </td>
+					<td>
+					<input type="checkbox" id="NO" name="NO"/>
+					芳香烃 </td>
+					<td>
+					<input type="checkbox" id="NO2" name="NO2"/>
+					炔烃</td>
+					<td>
+					<input type="checkbox" id="NH3" name="NH3"/>
+					TVOCs</td>
+				</tr>
+				<tr align="left">
+					<th>颗粒物阳离子质量浓度(μg/m<sup>3</sup>)： </th>
 					<td>
 					<input type="checkbox" id="NH4" name="NH4"/>
 					NH<sub>4</sub><sup>+</sup></td>
@@ -82,9 +99,11 @@
 					Na<sup>+</sup></td>
 					<td>
 					<input type="checkbox" id="TotalP" name="TotalP"/>
-					总阳离子 </td>
+					TCations </td>
 					<td>&nbsp;</td>
-					<th>颗粒物阴离子质量浓度(μg/m3)：</th>
+				</tr>
+				<tr align="left">
+					<th>颗粒物阴离子质量浓度(μg/m<sup>3</sup>)：</th>
 					<td>
 					<input type="checkbox" id="SO4" name="SO4"/>
 					SO<sub>4</sub><sup>2-</sup></td>
@@ -96,10 +115,10 @@
 					Cl<sup>-</sup></td>
 					<td>
 					<input type="checkbox" id="TotalN" name="TotalN"/>
-					总阴离子 </td>
+					TAnions </td>
 				</tr>
 				<tr align="left">
-					<th> 颗粒物含碳组分质量浓度(μgC/m3)：</th>
+					<th> 颗粒物含碳组分质量浓度(μgC/m<sup>3</sup>)：</th>
 					<td>
 					<input type="checkbox" id="OC" name="OC"/>
 					OC </td>
@@ -144,12 +163,14 @@
 		</div>
 	</div>
 	<script>
+		//显示/隐藏切换
 		$(document).ready(function() {
 			$(".selectdiv").hide();
 			$(".mainsel").click(function() {
 				$(".selectdiv").toggle(300);
 			});
 		});
+		
 		//控制Checkboxes默认选中状态
 		var selectSpecies = ["Cl", "NO3", "SO4"];
 		for (var i = 0; i < selectSpecies.length; i++) {

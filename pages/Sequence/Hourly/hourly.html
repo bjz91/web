@@ -18,8 +18,13 @@
 			点击此处显示/隐藏物种选择器
 		</p>
 	</div>
-	<div class="selectdiv" style="border-style:solid; border-width:1px;" align="left">
-		<form id="selectform">
+	<div class="selectdiv" style="border-style:solid; border-width:1px; padding:10px" align="left">
+		<form id="selectform" onchange="initSequence()">
+			<b>时间选择:</b>
+			<br />
+			<input type="month" id="user_date" value="2015-08" onchange="initSequence()"/>
+			<br />
+			<br />
 			<table border="0">
 				<tr align="left">
 					<th> 颗粒物质量浓度(μg/m<sup>3</sup>)： </th>
@@ -65,56 +70,56 @@
 				<tr align="left">
 					<th> 挥发性有机气体质量浓度(ppbC)： </th>
 					<td>
-					<input type="checkbox" id="O3" name="O3"/>
+					<input type="checkbox" id="烷烃" name="烷烃"/>
 					烷烃</td>
 					<td>
-					<input type="checkbox" id="CO" name="CO"/>
+					<input type="checkbox" id="烯烃" name="烯烃"/>
 					烯烃 </td>
 					<td>
-					<input type="checkbox" id="NO" name="NO"/>
+					<input type="checkbox" id="芳香烃" name="芳香烃"/>
 					芳香烃 </td>
 					<td>
-					<input type="checkbox" id="NO2" name="NO2"/>
+					<input type="checkbox" id="炔烃" name="炔烃"/>
 					炔烃</td>
 					<td>
-					<input type="checkbox" id="NH3" name="NH3"/>
+					<input type="checkbox" id="TVOCs" name="TVOCs"/>
 					TVOCs</td>
 				</tr>
 				<tr align="left">
 					<th>颗粒物阳离子质量浓度(μg/m<sup>3</sup>)： </th>
 					<td>
-					<input type="checkbox" id="NH4" name="NH4"/>
+					<input type="checkbox" id="NH4+" name="NH4+"/>
 					NH<sub>4</sub><sup>+</sup></td>
 					<td>
-					<input type="checkbox" id="K" name="K"/>
+					<input type="checkbox" id="K+" name="K+"/>
 					K<sup>+</sup></td>
 					<td>
-					<input type="checkbox" id="Ca" name="Ca"/>
+					<input type="checkbox" id="Ca2+" name="Ca2+"/>
 					Ca<sup>2+</sup></td>
 					<td>
-					<input type="checkbox" id="Mg" name="Mg"/>
+					<input type="checkbox" id="Mg2+" name="Mg2+"/>
 					Mg<sup>2+</sup></td>
 					<td>
-					<input type="checkbox" id="Na" name="Na"/>
+					<input type="checkbox" id="Na+" name="Na+"/>
 					Na<sup>+</sup></td>
 					<td>
-					<input type="checkbox" id="TotalP" name="TotalP"/>
+					<input type="checkbox" id="TCations" name="TCations"/>
 					TCations </td>
 					<td>&nbsp;</td>
 				</tr>
 				<tr align="left">
 					<th>颗粒物阴离子质量浓度(μg/m<sup>3</sup>)：</th>
 					<td>
-					<input type="checkbox" id="SO4" name="SO4"/>
+					<input type="checkbox" id="SO42-" name="SO42-"/>
 					SO<sub>4</sub><sup>2-</sup></td>
 					<td>
-					<input type="checkbox" id="NO3" name="NO3"/>
+					<input type="checkbox" id="NO3-" name="NO3-"/>
 					NO<sub>3</sub><sup>-</sup></td>
 					<td>
-					<input type="checkbox" id="Cl" name="Cl"/>
+					<input type="checkbox" id="Cl-" name="Cl-"/>
 					Cl<sup>-</sup></td>
 					<td>
-					<input type="checkbox" id="TotalN" name="TotalN"/>
+					<input type="checkbox" id="TAnions" name="TAnions"/>
 					TAnions </td>
 				</tr>
 				<tr align="left">
@@ -139,14 +144,6 @@
 			<input onclick="checkAllaction(1)" type="button" value="全选" />
 			<input onclick="checkAllaction(3)" type="button" value="反选" />
 			<input onclick="checkAllaction(2)" type="button" value="清空" />
-			<br />
-			<br />
-			<label for="user_date">请选择时间：</label>
-			<br />
-			<input type="month" id="user_date" value="2015-08"/>
-			<br />
-			<br />
-			<input type="button" value="刷新" style="width:50px;height:30px" onclick="initSequence();"/>
 		</form>
 	</div>
 	<br />
@@ -172,7 +169,7 @@
 		});
 
 		//控制Checkboxes默认选中状态
-		var selectSpecies = ["Cl", "NO3", "SO4"];
+		var selectSpecies = ["OC", "EC", "TC", "烷烃", "烯烃", "芳香烃", "炔烃", "TVOCs"];
 		for (var i = 0; i < selectSpecies.length; i++) {
 			var checkbox = document.getElementById(selectSpecies[i]);
 			checkbox.setAttribute("checked", true);

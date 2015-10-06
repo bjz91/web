@@ -8,7 +8,7 @@ function initSequence() {
 
 	/*--------- 判断复选框是否选中 ---------*/
 	//Json中污染物的顺序
-	var species = ["Cl", "NO2", "Br", "NO3", "SO4", "Li", "Na", "NH4", "K", "Mg", "Ca"];
+	var species = ["NH4+", "Na+", "K+", "Ca2+", "Mg2+", "TCations", "SO42-", "NO3-", "Cl-", "TAnions", "OC", "EC", "BC", "TC", "烷烃", "烯烃", "芳香烃", "炔烃", "TVOCs"];
 
 	var plotBool = [];
 	for (var i = 0; i < species.length; i++) {

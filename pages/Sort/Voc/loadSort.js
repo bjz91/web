@@ -24,7 +24,7 @@ function loadSort(year, month, date, sortdata, tag) {
 		}
 	}
 
-	var otherIdx = newName.indexOf('other');
+	var otherIdx = newName.indexOf('其他');
 
 	/*------------ 画图 ------------*/
 

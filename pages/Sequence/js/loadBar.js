@@ -18,20 +18,20 @@ function loadBar(data, plotBool) {
 			if (plotBool[i] == true) {
 				//如果该物种被选，则生成物种的对象和值
 				var list = [];
-				for (var j = 0; j < data.bartime.value[0].length; j++) {
-					if (data.bartime.value[i][j] == "NaN") {
+				for (var j = 0; j < data.data.length; j++) {
+					if (data.data[j].species[i] == -9999) {
 						list.push('-');
 					} else {
-						list.push(data.bartime.value[i][j]);
+						list.push(data.data[j].species[i]);
 					}
 				}
 				//series对象
 				var obj = {
-					'name' : data.bartime.name[i],
+					'name' : data.name[i],
 					'type' : 'line',
 					'data' : list,
 					'yAxisIndex' : 0,
-					'symbol' : 'none',
+					//'symbol' : 'none',
 					'itemStyle' : {
 						'normal' : {
 							'barBorderRadius' : 0 //for bar，边缘取消圆角
@@ -41,7 +41,7 @@ function loadBar(data, plotBool) {
 				};
 				setSeries.push(obj);
 				//图例名称
-				legendData.push(data.bartime.name[i]);
+				legendData.push(data.name[i]);
 			}
 		}
 
@@ -50,7 +50,7 @@ function loadBar(data, plotBool) {
 
 		var option = {
 			title : {
-				text : data.bartime.text,
+				text : data.title,
 				//'subtext' : '数据来源：毕鉴昭'
 			},
 			tooltip : {
@@ -99,11 +99,10 @@ function loadBar(data, plotBool) {
 				'axisLabel' : {
 					'interval' : 0
 				},
-				'data' : data.bartime.xaxis
+				'data' : ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
 			}],
 			yAxis : {
-				'type' : 'value',
-				'name' : 'ug/m3'
+				'type' : 'value'
 			},
 			series : setSeries
 		};

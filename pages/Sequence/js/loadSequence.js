@@ -21,7 +21,7 @@ function loadSequence(data, plotBool) {
 				'type' : 'line',
 				'data' : list,
 				'yAxisIndex' : 0,
-				'symbol' : 'none',
+				//'symbol' : 'none',
 				'itemStyle' : {
 					'normal' : {
 						'barBorderRadius' : 0 //for bar，边缘取消圆角

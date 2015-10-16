@@ -90,14 +90,18 @@ function loadSort(year, month, date, sortdata, tag) {
 					}
 				}(),
 				axisLabel : {
-					show : false,
-					interval : 0
+					show : true,
+					interval : 0,
+					rotate : -45
 				}
 			}],
 			yAxis : [{
 				type : 'value',
 				//name : 'ug/m3'
 			}],
+			grid : {
+				height : '400px'
+			},
 			series : [{
 				name : '浓度',
 				type : 'bar',

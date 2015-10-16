@@ -1,4 +1,4 @@
-function loadBar(data, plotBool) {
+function loadBar(data, plotBool, xaxis) {
 
 	// 路径配置
 	require.config({
@@ -99,7 +99,7 @@ function loadBar(data, plotBool) {
 				'axisLabel' : {
 					'interval' : 0
 				},
-				'data' : ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
+				'data' : xaxis
 			}],
 			yAxis : {
 				'type' : 'value'

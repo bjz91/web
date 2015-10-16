@@ -69,7 +69,8 @@ function loadSequence(data, plotBool) {
 			},
 			legend : {
 				//按照被选物种自动增减图例
-				data : legendData
+				data : legendData,
+				x : 'right',
 			},
 			toolbox : {
 				show : true,
